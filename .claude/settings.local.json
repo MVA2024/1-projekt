@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($env:PATH += \";C:\\\\Program Files\\\\GitHub CLI\"; Get-ChildItem -Path $env:USERPROFILE -Filter \"hosts.yml\" -Recurse -ErrorAction SilentlyContinue | Select-Object FullName)"
+    ]
+  }
+}

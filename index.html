@@ -1,379 +1,546 @@
-<title>Владимир Медин</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Владимир Медин — цифровой специалист</title>
 <style>
-  /* Design Plan: Modern tech-focused personal card with dark theme, gradient accents, smooth animations */
+:root {
+  --bg:        #111820;
+  --bg-raised: #19232f;
+  --fg:        #e2ddd5;
+  --fg-muted:  #7d8e9e;
+  --fg-dim:    #4a5a6a;
+  --accent:    #b8872a;
+  --accent-lt: #d4a84e;
+  --border:    #1f2e3d;
+  --ff-disp: Georgia, "Times New Roman", serif;
+  --ff-body: "Segoe UI", Arial, sans-serif;
+  color-scheme: dark;
+}
 
-  :root {
-    --bg-dark: #0a0a0a;
-    --bg-card: #1a1a1a;
-    --text-primary: #ffffff;
-    --text-secondary: #b0b0b0;
-    --accent-1: #00d4ff;
-    --accent-2: #7c3aed;
-    --accent-gradient: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%);
-    --glow-color: rgba(0, 212, 255, 0.3);
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    --font-display: 'Poppins', system-ui, sans-serif;
-    --font-body: 'Inter', system-ui, sans-serif;
-  }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--ff-body);
+  font-size: 1rem;
+  line-height: 1.7;
+}
 
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      color-scheme: dark;
-    }
-  }
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-lt); }
 
-  :root[data-theme="dark"] {
-    color-scheme: dark;
-  }
+.wrap { max-width: 900px; margin: 0 auto; padding: 0 24px; }
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(17,24,32,.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 0;
+}
+nav .wrap { display: flex; justify-content: space-between; align-items: center; }
+.nav-logo { font-family: var(--ff-disp); font-size: 1.05rem; color: var(--fg); }
+.nav-links { display: flex; gap: 28px; }
+.nav-links a { color: var(--fg-muted); font-size: .9rem; }
+.nav-links a:hover { color: var(--fg); }
 
-  body {
-    background: var(--bg-dark);
-    color: var(--text-primary);
-    font-family: var(--font-body);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-left: max(16px, env(safe-area-inset-left, 0px));
-    padding-right: max(16px, env(safe-area-inset-right, 0px));
-    padding-block: 40px;
-  }
+/* HERO */
+.hero {
+  padding: 100px 0 80px;
+  border-bottom: 1px solid var(--border);
+}
+.hero-eyebrow {
+  font-size: .8rem;
+  letter-spacing: .12em;
+  color: var(--fg-dim);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.hero-headline {
+  font-family: var(--ff-disp);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--fg);
+  margin-bottom: 28px;
+  max-width: 780px;
+}
+.hero-sub {
+  font-size: 1.1rem;
+  color: var(--fg-muted);
+  max-width: 520px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  background: var(--accent);
+  color: #111820;
+  font-weight: 600;
+  font-size: .95rem;
+  border-radius: 3px;
+  transition: background .2s;
+}
+.btn:hover { background: var(--accent-lt); color: #111820; }
 
-  .card {
-    background: var(--bg-card);
-    border: 1px solid rgba(0, 212, 255, 0.1);
-    border-radius: 24px;
-    padding: 60px 40px;
-    max-width: 420px;
-    width: 100%;
-    text-align: center;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-    animation: slideUp 0.6s ease-out;
-  }
+/* TRUST STRIP */
+.trust {
+  padding: 40px 0;
+  border-bottom: 1px solid var(--border);
+}
+.trust-items {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.trust-item { display: flex; flex-direction: column; gap: 4px; }
+.trust-num {
+  font-family: var(--ff-disp);
+  font-size: 2rem;
+  color: var(--accent);
+  font-style: italic;
+}
+.trust-label { font-size: .85rem; color: var(--fg-muted); }
 
-  .card:hover {
-    border-color: rgba(0, 212, 255, 0.2);
-    box-shadow: 0 16px 48px rgba(0, 212, 255, 0.15);
-  }
+/* SERVICES */
+.services {
+  padding: 80px 0;
+  border-bottom: 1px solid var(--border);
+}
+.section-title {
+  font-family: var(--ff-disp);
+  font-size: 1.6rem;
+  font-style: italic;
+  color: var(--fg-muted);
+  margin-bottom: 48px;
+}
+.service-list { display: flex; flex-direction: column; gap: 0; }
+.service-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 32px 0;
+  border-top: 1px solid var(--border);
+  align-items: start;
+}
+.service-name {
+  font-family: var(--ff-disp);
+  font-size: 1.3rem;
+  color: var(--fg);
+}
+.service-desc { color: var(--fg-muted); font-size: .95rem; line-height: 1.6; }
+.service-price {
+  display: block;
+  margin-top: 12px;
+  font-size: .85rem;
+  color: var(--fg-dim);
+}
 
-  @keyframes slideUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+/* PROCESS */
+.process {
+  padding: 80px 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-raised);
+}
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-top: 48px;
+}
+.step {
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.step-n {
+  font-family: var(--ff-disp);
+  font-size: 2.4rem;
+  font-style: italic;
+  color: var(--border);
+  margin-bottom: 12px;
+}
+.step-title { font-size: 1rem; font-weight: 600; margin-bottom: 8px; color: var(--fg); }
+.step-desc { font-size: .9rem; color: var(--fg-muted); line-height: 1.6; }
 
-  .avatar {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto 30px;
-    background: var(--accent-gradient);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 48px;
-    font-weight: bold;
-    box-shadow: 0 0 30px var(--glow-color);
-    animation: pulse 3s ease-in-out infinite;
-  }
+/* ABOUT */
+.about {
+  padding: 80px 0;
+  border-bottom: 1px solid var(--border);
+}
+.about-inner {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 64px;
+  align-items: start;
+}
+.about-text h2 {
+  font-family: var(--ff-disp);
+  font-size: 1.8rem;
+  font-style: italic;
+  margin-bottom: 24px;
+  color: var(--fg);
+}
+.about-text p {
+  color: var(--fg-muted);
+  margin-bottom: 16px;
+  font-size: .98rem;
+  line-height: 1.7;
+}
+.about-photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: 3px;
+  filter: grayscale(20%);
+}
+.about-photo-placeholder {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fg-dim);
+  font-size: .85rem;
+  text-align: center;
+}
 
-  @keyframes pulse {
-    0%, 100% {
-      box-shadow: 0 0 30px var(--glow-color);
-    }
-    50% {
-      box-shadow: 0 0 50px rgba(124, 58, 237, 0.4);
-    }
-  }
+/* FAQ */
+.faq {
+  padding: 80px 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-raised);
+}
+.faq-list { margin-top: 48px; }
+.faq-item { border-top: 1px solid var(--border); }
+.faq-item:last-child { border-bottom: 1px solid var(--border); }
+.faq-q {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  color: var(--fg);
+  font-family: var(--ff-body);
+  font-size: 1rem;
+  padding: 20px 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.faq-q:hover { color: var(--accent-lt); }
+.faq-icon { color: var(--accent); font-size: 1.4rem; flex-shrink: 0; transition: transform .25s; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease;
+}
+.faq-a-inner {
+  padding: 0 0 20px;
+  color: var(--fg-muted);
+  font-size: .95rem;
+  line-height: 1.7;
+  max-width: 680px;
+}
 
-  .name {
-    font-family: var(--font-display);
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 12px;
-    background: var(--accent-gradient);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 30px var(--glow-color);
-    letter-spacing: -0.5px;
-    animation: glowPulse 2s ease-in-out infinite;
-  }
+/* CONTACT */
+.contact { padding: 80px 0; }
+.contact-inner {
+  max-width: 560px;
+}
+.contact h2 {
+  font-family: var(--ff-disp);
+  font-size: 2rem;
+  font-style: italic;
+  margin-bottom: 20px;
+  color: var(--fg);
+}
+.contact p { color: var(--fg-muted); margin-bottom: 32px; line-height: 1.7; }
+.contact-links { display: flex; flex-direction: column; gap: 12px; }
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1rem;
+  color: var(--fg-muted);
+  padding: 14px 20px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  transition: border-color .2s, color .2s;
+}
+.contact-link:hover { border-color: var(--accent); color: var(--accent-lt); }
+.contact-icon { font-size: 1.2rem; }
 
-  @keyframes glowPulse {
-    0%, 100% {
-      filter: drop-shadow(0 0 10px var(--glow-color));
-    }
-    50% {
-      filter: drop-shadow(0 0 20px rgba(124, 58, 237, 0.4));
-    }
-  }
+/* FOOTER */
+footer {
+  padding: 32px 0;
+  border-top: 1px solid var(--border);
+}
+footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: .85rem;
+  color: var(--fg-dim);
+}
 
-  .role {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    margin-bottom: 8px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .service-item { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr; }
+  .about-inner { grid-template-columns: 1fr; }
+  .about-photo, .about-photo-placeholder { max-width: 260px; }
+  .trust-items { gap: 28px; }
+}
 
-  .title {
-    font-size: 1.1rem;
-    color: var(--accent-1);
-    margin-bottom: 30px;
-    font-weight: 500;
-  }
-
-  .divider {
-    width: 60px;
-    height: 3px;
-    background: var(--accent-gradient);
-    margin: 30px auto;
-    border-radius: 2px;
-    opacity: 0.6;
-  }
-
-  .contact-info {
-    margin: 30px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .contact-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    transition: all 0.3s ease;
-  }
-
-  .contact-item:hover {
-    color: var(--accent-1);
-    transform: translateX(4px);
-  }
-
-  .telegram-icon {
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--accent-gradient);
-    border-radius: 50%;
-    color: white;
-    font-weight: bold;
-    font-size: 12px;
-  }
-
-  .email-icon {
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .cta-button {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 14px 40px;
-    background: var(--accent-gradient);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-family: var(--font-body);
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 16px rgba(0, 212, 255, 0.3);
-    letter-spacing: 0.3px;
-  }
-
-  .cta-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.5s ease;
-  }
-
-  .cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 212, 255, 0.4);
-  }
-
-  .cta-button:hover::before {
-    left: 100%;
-  }
-
-  .cta-button:active {
-    transform: translateY(0);
-  }
-
-  .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 30px;
-  }
-
-  .social-icon {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid rgba(0, 212, 255, 0.2);
-    border-radius: 50%;
-    color: var(--text-secondary);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    font-size: 20px;
-  }
-
-  .social-icon:hover {
-    border-color: var(--accent-1);
-    color: var(--accent-1);
-    background: rgba(0, 212, 255, 0.1);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0, 212, 255, 0.2);
-  }
-
-  .footer-note {
-    margin-top: 40px;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    opacity: 0.7;
-  }
-
-  @media (max-width: 480px) {
-    body {
-      padding-block: 20px;
-    }
-
-    .card {
-      padding: 40px 24px;
-      border-radius: 16px;
-    }
-
-    .name {
-      font-size: 2rem;
-    }
-
-    .avatar {
-      width: 80px;
-      height: 80px;
-      font-size: 40px;
-    }
-
-    .title {
-      font-size: 1rem;
-    }
-  }
+@media (prefers-reduced-motion: reduce) {
+  .faq-a { transition: none; }
+  .faq-icon { transition: none; }
+}
 </style>
+</head>
+<body>
 
-<div class="card">
-  <div class="avatar">ВМ</div>
-
-  <h1 class="name">Владимир Медин</h1>
-
-  <div class="role">Технолог</div>
-  <div class="title">Разработчик эффективного интеллекта</div>
-
-  <div class="divider"></div>
-
-  <div class="contact-info">
-    <div class="contact-item">
-      <div class="telegram-icon">✈</div>
-      <span>@territoriya_zdorovya1</span>
-    </div>
-    <div class="contact-item">
-      <div class="email-icon">📧</div>
-      <span>vmedin2019@gmail.com</span>
+<nav>
+  <div class="wrap">
+    <span class="nav-logo">Владимир Медин</span>
+    <div class="nav-links">
+      <a href="#services">Услуги</a>
+      <a href="#process">Как работаю</a>
+      <a href="#about">Обо мне</a>
+      <a href="#contact">Обсудить задачу</a>
     </div>
   </div>
+</nav>
 
-  <button class="cta-button" onclick="openTelegram()">Написать мне</button>
-
-  <div class="social-links">
-    <a class="social-icon" href="https://t.me/territoriya_zdorovya1" target="_blank" title="Telegram">
-      💬
-    </a>
-    <a class="social-icon" href="mailto:vmedin2019@gmail.com" title="Email">
-      📧
-    </a>
+<section class="hero">
+  <div class="wrap">
+    <p class="hero-eyebrow">Цифровой специалист · Малый бизнес</p>
+    <h1 class="hero-headline">Берёте телефон, ставите задачу агенту. Получаете результат. Мгновенно.</h1>
+    <p class="hero-sub">Пока конкуренты считают вручную — ваш бизнес уже знает ответ. Создаю сайты, приложения и ИИ-агентов для предпринимателей, которые платят за результат.</p>
+    <a href="#contact" class="btn">Обсудить задачу</a>
   </div>
+</section>
 
-  <div class="footer-note">
-    Всегда открыт к новым идеям и сотрудничеству
+<section class="trust">
+  <div class="wrap">
+    <div class="trust-items">
+      <div class="trust-item">
+        <span class="trust-num">3</span>
+        <span class="trust-label">типа решений: сайты, приложения, ИИ-агенты</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-num">20–30%</span>
+        <span class="trust-label">рост прибыли через автоматизацию</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-num">0</span>
+        <span class="trust-label">давления на решение — только ваша выгода</span>
+      </div>
+    </div>
   </div>
-</div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <p class="section-title">Что я делаю</p>
+    <div class="service-list">
+
+      <div class="service-item">
+        <span class="service-name">Сайт под ваш бизнес</span>
+        <div>
+          <p class="service-desc">Не просто красивая страница — инструмент, который приводит клиентов и снимает лишние звонки. Анализирую, что реально нужно вашему бизнесу, и делаю именно это.</p>
+          <span class="service-price">от 30 000 ₽ · срок 2–3 недели</span>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <span class="service-name">ИИ-агент для рутины</span>
+        <div>
+          <p class="service-desc">Инструмент, который берёт на себя повторяющиеся задачи: обработку заявок, анализ данных, ответы клиентам. Освобождает время — вы занимаетесь делом, а не рутиной.</p>
+          <span class="service-price">от 50 000 ₽ · срок 3–4 недели</span>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <span class="service-name">Веб-приложение</span>
+        <div>
+          <p class="service-desc">Когда сайта уже недостаточно: личный кабинет для клиентов, система учёта, автоматизация заказов. Строю под реальные процессы вашего бизнеса.</p>
+          <span class="service-price">от 80 000 ₽ · срок по договорённости</span>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <span class="service-name">Первая консультация</span>
+        <div>
+          <p class="service-desc">Разберём вашу задачу вместе. Я объясню, что реально поможет вашему бизнесу и сколько это стоит — без жаргона и без давления.</p>
+          <span class="service-price">Бесплатно · 30–40 минут</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <p class="section-title">Как я работаю</p>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-n">1</div>
+        <div class="step-title">Разбираемся в задаче</div>
+        <p class="step-desc">Вы рассказываете — я слушаю. Не о технологиях, а о вашем бизнесе: что не так, что хотите улучшить, сколько это должно стоить.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">2</div>
+        <div class="step-title">Показываю вашу выгоду</div>
+        <p class="step-desc">Объясняю конкретно: что получите, когда получите, что изменится в работе. Вы принимаете решение с полным пониманием.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">3</div>
+        <div class="step-title">Делаю в срок</div>
+        <p class="step-desc">Работаю по договорённости, держу вас в курсе. Никаких сюрпризов по деньгам и срокам — сказал, сделал.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">4</div>
+        <div class="step-title">Объясняю и остаюсь на связи</div>
+        <p class="step-desc">Сдаю не просто файл — объясняю, как пользоваться. Остаюсь доступен, если что-то нужно скорректировать.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-inner">
+      <div class="about-text">
+        <h2>Владимир Медин</h2>
+        <p>Цифровой специалист. Создаю сайты, приложения и ИИ-агентов для малого бизнеса и индивидуальных предпринимателей.</p>
+        <p>Работаю с предпринимателями, которые построили дело руками и теперь готовы передать рутину технологиям. Не продаю технологии — помогаю понять, что реально нужно вашему бизнесу, и делаю именно это.</p>
+        <p>Три принципа: понять задачу правильно, выдержать сроки, сделать надёжно.</p>
+      </div>
+      <div class="about-photo-placeholder">Фото<br>Владимира<br>Медина</div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <p class="section-title">Частые вопросы</p>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Я не разбираюсь в технологиях — это проблема?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Нет. Вам не нужно понимать, как это работает — нужно понимать, что хотите получить. Я перевожу ваш запрос в конкретное решение и объясняю на языке выгоды, не жаргона.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Как понять, что мне нужен сайт, а не что-то другое?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Именно для этого — бесплатная первая консультация. Часто клиенты приходят за сайтом, а в итоге нужна автоматизация заявок или ИИ-агент для анализа. Разберёмся вместе.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Что такое ИИ-агент и зачем он мне?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Инструмент, который берёт на себя рутинную работу: обрабатывает заявки, отвечает клиентам, анализирует данные. Вы ставите задачу — он делает. Высвобождает время и увеличивает количество продаж без найма новых сотрудников.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Сколько времени займёт и что нужно от меня?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Сайт — 2–3 недели, ИИ-агент — 3–4 недели. От вас: один-два созвона в начале, обратная связь по ходу. Я веду процесс сам и держу вас в курсе без лишних деталей.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Почему стоит доверять, если у вас нет большого портфолио?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Честный ответ: этот сайт — мой первый проект, и он сделан для демонстрации подхода. Начинаю с малого бизнеса в своём регионе, берусь за конкретные задачи, даю бесплатную консультацию — чтобы вы сначала убедились, что я понимаю вашу задачу.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-inner">
+      <h2>Обсудим вашу задачу</h2>
+      <p>Напишите в Telegram — расскажите о своём бизнесе. Первая консультация бесплатно: разберём, что реально поможет, и вы сами решите, нужно ли вам это.</p>
+      <div class="contact-links">
+        <a href="https://t.me/vmedin" class="contact-link">
+          <span class="contact-icon">✈</span>
+          Telegram: @vmedin
+        </a>
+        <a href="mailto:vmedin2019@gmail.com" class="contact-link">
+          <span class="contact-icon">@</span>
+          vmedin2019@gmail.com
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Владимир Медин</span>
+    <span>Цифровой специалист</span>
+  </div>
+</footer>
 
 <script>
-  function openTelegram() {
-    const telegramUrl = 'https://t.me/territoriya_zdorovya1';
-    window.open(telegramUrl, '_blank');
-  }
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const answer = item.querySelector('.faq-a');
+    const isOpen = item.classList.contains('open');
 
-  // Handle button ripple effect on click
-  document.querySelector('.cta-button').addEventListener('click', function(e) {
-    const ripple = document.createElement('span');
-    const rect = this.getBoundingClientRect();
-    const size = Math.max(rect.width, rect.height);
-    const x = e.clientX - rect.left - size / 2;
-    const y = e.clientY - rect.top - size / 2;
+    document.querySelectorAll('.faq-item.open').forEach(openItem => {
+      openItem.classList.remove('open');
+      openItem.querySelector('.faq-a').style.maxHeight = '0';
+    });
 
-    ripple.style.cssText = `
-      position: absolute;
-      width: ${size}px;
-      height: ${size}px;
-      left: ${x}px;
-      top: ${y}px;
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 50%;
-      pointer-events: none;
-      animation: rippleEffect 0.6s ease-out;
-    `;
-
-    this.appendChild(ripple);
-    setTimeout(() => ripple.remove(), 600);
-  });
-
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes rippleEffect {
-      from {
-        transform: scale(0);
-        opacity: 1;
-      }
-      to {
-        transform: scale(1);
-        opacity: 0;
-      }
+    if (!isOpen) {
+      item.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
     }
-  `;
-  document.head.appendChild(style);
+  });
+});
 </script>
+
+</body>
+</html>
